@@ -43,7 +43,7 @@
 % with this program. If not, see <http://www.gnu.org/licenses/>.
 %------------- BEGIN CODE -------------
 
-function [ param_eq ] = environment( param_eq, h, lat, lon, dayOfYear, UTseconds, f107Average, f107Daily, magneticIndex, AnO )
+function [ param_eq ] = environment( param_eq, h, lat, lon, year, dayOfYear, UTseconds, f107Average, f107Daily, magneticIndex, AnO )
 
 % Constants
 [data] = ADBSatConstants;
@@ -55,7 +55,7 @@ else
 end
 
 % Atmospheric properties
-[T, param_eq.rho] = atmosnrlmsise00(h, lat, lon, 2002, dayOfYear, UTseconds, f107Average, f107Daily, magneticIndex, Oflag);
+[T, param_eq.rho] = atmosnrlmsise00(h, lat, lon, year, dayOfYear, UTseconds, f107Average, f107Daily, magneticIndex, Oflag);
 
 % Format temperature data
 param_eq.Texo = T(1);
